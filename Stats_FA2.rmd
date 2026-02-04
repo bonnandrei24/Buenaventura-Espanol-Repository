@@ -1,0 +1,210 @@
+---
+title: "Statistical Theory FA2"
+author: "Group Members: Amyah Espanol & Bonn Bueneventura"
+output: pdf_document
+---
+
+**GitHub Repository (R Code):**  
+https://github.com/bonnandrei24/Buenaventura-Espanol-Repository
+
+## Question 3.49
+Prove that:
+
+\[
+\sum_{j=1}^{N} (X_j - 1)^2
+= \sum_{j=1}^{N} X_j^2 - 2\sum_{j=1}^{N} X_j + N
+\]
+
+### Proof
+
+Expand the square on the left:
+
+\[
+(X_j - 1)^2 = X_j^2 - 2X_j + 1
+\]
+
+Now sum both sides from \( j = 1 \) to \( N \):
+
+\[
+\sum_{j=1}^{N} (X_j - 1)^2
+= \sum_{j=1}^{N} X_j^2
+- 2\sum_{j=1}^{N} X_j
++ \sum_{j=1}^{N} 1
+\]
+
+Since \( \sum_{j=1}^{N} 1 = N \):
+
+\[
+\sum_{j=1}^{N} (X_j - 1)^2
+= \sum_{j=1}^{N} X_j^2
+- 2\sum_{j=1}^{N} X_j
++ N
+\]
+
+\(\blacksquare\)
+
+---
+
+## Question 3.51
+Vectors are defined as:
+
+\[
+U_1=3,\; U_2=-2,\; U_3=5, \qquad 
+V_1=-4,\; V_2=-1,\; V_3=6
+\]
+
+### Part (a) \( \sum UV \)
+
+\[
+UV = (3)(-4) + (-2)(-1) + (5)(6)
+= -12 + 2 + 30 = 20
+\]
+
+\[
+\boxed{20}
+\]
+
+### Part (b) \( \sum (U + 3)(V - 4) \)
+
+Compute each term:
+
+- \((3+3)(-4-4) = 6(-8) = -48\)  
+- \((-2+3)(-1-4) = 1(-5) = -5\)  
+- \((5+3)(6-4) = 8(2) = 16\)  
+
+Sum:
+
+\[
+-48 - 5 + 16 = -37
+\]
+
+\[
+\boxed{-37}
+\]
+
+### Part (c) \( \sum V^2 \)
+
+\[
+(-4)^2 + (-1)^2 + 6^2 = 16 + 1 + 36 = 53
+\]
+
+\[
+\boxed{53}
+\]
+
+### Part (d) \( (\sum U)(\sum V)^2 \)
+
+\[
+\sum U = 3 - 2 + 5 = 6, \quad
+\sum V = -4 - 1 + 6 = 1
+\]
+
+\[
+(\sum V)^2 = 1^2 = 1
+\]
+
+\[
+6 \cdot 1 = 6
+\]
+
+\[
+\boxed{6}
+\]
+
+### Part (e) \( \sum UV^2 \)
+
+\[
+3(-4)^2 + (-2)(-1)^2 + 5(6)^2 = 48 - 2 + 180 = 226
+\]
+
+\[
+\boxed{226}
+\]
+
+### Part (f) \( \sum (U^2 - 2V^2 + 2) \)
+
+\[
+3^2 - 2(16) + 2 = -21, \quad
+(-2)^2 - 2(1) + 2 = 4, \quad
+5^2 - 2(36) + 2 = -45
+\]
+
+\[
+-21 + 4 - 45 = -62
+\]
+
+\[
+\boxed{-62}
+\]
+
+### Part (g) \( \sum (U/V) \)
+
+\[
+3/(-4) + (-2)/(-1) + 5/6 = -0.75 + 2 + 0.8333 \approx 2.0833
+\]
+
+\[
+\boxed{2.0833}
+\]
+
+---
+
+# Problem 3.90  
+**Find the geometric mean of:**
+
+---
+
+## Version 1: Manual Calculation
+
+### Part (a) \(3, 5, 8, 3, 7, 2\)
+
+\[
+\text{GM} = (x_1 x_2 \cdots x_n)^{1/n}
+\]
+
+\[
+3 \cdot 5 \cdot 8 \cdot 3 \cdot 7 \cdot 2 = 5040
+\]
+
+\[
+\text{GM} = 5040^{1/6} \approx 4.37
+\]
+
+\[
+\boxed{4.37}
+\]
+
+### Part (b) \(28.5, 73.6, 47.2, 31.5, 64.8\)
+
+\[
+28.5 \cdot 73.6 \cdot 47.2 \cdot 31.5 \cdot 64.8 = 20054656.64
+\]
+
+\[
+\text{GM} = (20054656.64)^{1/5} \approx 45.09
+\]
+
+\[
+\boxed{45.09}
+\]
+
+---
+
+## Version 2: Using R Code
+
+```{r geometric-means}
+# Uncomment to install if not already installed
+# install.packages("psych")
+library(psych)
+
+# Define the sets
+set_a <- c(3, 5, 8, 3, 7, 2)
+set_b <- c(28.5, 73.6, 47.2, 31.5, 64.8)
+
+# Compute geometric means
+gm_a <- geometric.mean(set_a)
+gm_b <- geometric.mean(set_b)
+
+# Print results
+cat("Set A GM:", gm_a, "\n")
+cat("Set B GM:", gm_b, "\n")
